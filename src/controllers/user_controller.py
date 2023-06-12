@@ -41,8 +41,7 @@ def login():
         return make_response({"message":"Enter password correctly"} , 401)
     
     access_token = create_access_token(identity= username , fresh= datetime.timedelta(minutes= 30))
-    json_version = json_util.dumps(access_token)
-    return make_response({'access_token': json_version} , 201)
+    return make_response({'access_token': access_token} , 201)
 
 def get_All_Users():
     body = json.loads(request.data)
