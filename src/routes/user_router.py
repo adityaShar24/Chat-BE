@@ -10,7 +10,6 @@ def register_wrapper():
     return register()
 
 @auth_bp.post('/login')
-@jwt_required()
 def login_wrapper():
     return login()
 

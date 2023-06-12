@@ -9,10 +9,13 @@ class User:
         user_id = Users_collection.insert_one({"username":self.username , 'password':self.password}).inserted_id
         return user_id
     
-    @classmethod
-    def find_by_username(cls, username):
+    def find_by_username(username):
         existing_user = Users_collection.find_one({'username': username})
         return existing_user
+    
+    def find_password(password):
+        user_password = Users_collection.find_one({'password':password})
+        return user_password 
     
     def get_all_users(self):
         users = Users_collection.find()

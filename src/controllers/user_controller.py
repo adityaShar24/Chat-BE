@@ -14,7 +14,7 @@ def register():
     if not (users.password and users.username):
         return make_response({"message":"Username and password cannot be empty"} , 400)
     
-    registered_user = User.find_by_username(User , username)
+    registered_user = User.find_by_username(username)
     
     if registered_user:
         return make_response(f"username {username} already exits please enter unique username" , 401)
@@ -34,10 +34,15 @@ def login():
     
     existing_user = User.find_by_username(username)
     if not existing_user:
-        return make_response({"message":"No user found"} , 401)
+        return make_response({"message":"Enter username correctly"} , 401)
+    
+    users_password = User.find_password(password)
+    if not users_password:
+        return make_response({"message":"Enter password correctly"} , 401)
     
     access_token = create_access_token(identity= username , fresh= datetime.timedelta(minutes= 30))
-    return make_response({'access_token': access_token} , 201)
+    json_version = json_util.dumps(access_token)
+    return make_response({'access_token': json_version} , 201)
 
 def get_All_Users():
     body = json.loads(request.data)
