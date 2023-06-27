@@ -24,6 +24,18 @@ def create_room():
     
     return make_response({'message':"Room has been created successfully" , "Room":json_Version} , 201)
 
+def join_room():
+    body = json.loads(request.data)
+    roomID = body['roomID']
+    userID = body['userID']
+    if not roomID and userID:
+        return make_response({'message':"userId and roomname cannot be empty"} , 400)
+    member_id = Room.add_members(roomID , userID)
+    json_Version = json_util.dumps(member_id)
+    
+    return make_response({'message': f"Member has been added to room {roomID} successfully" , "Member": json_Version} , 201)
+    
+
 def get_All_rooms():
     rooms = Room.get_rooms()
     json_Version = json_util.dumps(rooms)
