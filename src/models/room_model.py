@@ -2,7 +2,7 @@ from database.mongo import Rooms_Collection
 from bson.objectid import ObjectId
 
 class Room:
-    def __init__(self , roomname , userID):
+    def __init__(self , roomname , userID ):
         self.roomname = roomname
         self.userID = ObjectId(userID)
         self.members = []
@@ -13,7 +13,7 @@ class Room:
         return existing_room
         
     def create_room(self) :
-        room_id = Rooms_Collection.insert_one({'roomname': self.roomname , 'userID': self.userID}).inserted_id
+        room_id = Rooms_Collection.insert_one({'roomname': self.roomname , 'userID': self.userID , 'members': self.members}).inserted_id
         return room_id
         
     def delete_room(roomname):
@@ -25,6 +25,10 @@ class Room:
         rooms_list = list(rooms)
         return rooms_list
     
-    def add_members(self , userID):
-        member_id = self.members.append(userID)
-        return member_id
+    def find_by_id(roomID):
+        existing_roomID = Rooms_Collection.find_one({'_id': roomID})
+        return existing_roomID
+        
+    def add_members(self, userID):
+        self.members.append(userID)
+        return self.members

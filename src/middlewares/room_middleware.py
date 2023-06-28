@@ -3,10 +3,10 @@ from models.room_model import Room
 import json
 from routes.room_router import room_bp
 
-@room_bp.before_request
+
 def create_room_middleware():
-    if request.endpoint == 'create_room_wrapper':
-        body = json.loads()
+    if request.endpoint == 'room_bp.create_room_wrapper':
+        body = json.loads(request.data)
         roomname = body['roomname']
         userID = body['userID']
         if not roomname:
@@ -19,22 +19,20 @@ def create_room_middleware():
     
     
     
-@room_bp.before_request    
 def join_room_middleware():
     if request.endpoint == 'join_room_wrapper':
         body = json.loads(request.data)
-        roomname = body['roomname']
+        roomID = body['roomname']
         userID = body['userID']
-        
-        if not roomname:
-            return make_response({'message':'roomname field cannot be empty'} , 400)
+        if not roomID:
+            return make_response({'message':'roomID field cannot be empty'} , 400)
         
         if not userID:
             return make_response({'message':'userID field cannot be empty'} , 400)
         
-        existing_room = Room.find_by_name(roomname= roomname)
+        existing_room = Room.find_by_id(roomID)
         if not existing_room:
-            return make_response({'message':f"roomname {roomname} does not exists please check and enter again"} , 400)
+            return make_response({'message': f"Room with ID {roomID} does not exist please check and enter again"} , 404)
     
 
     

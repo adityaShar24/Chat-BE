@@ -19,7 +19,8 @@ def join_room():
     body = json.loads(request.data)
     roomID = body['roomID']
     userID = body['userID']
-    member_id = Room.add_members(roomID , userID)
+    room = Room(userID= userID , roomname= roomID)
+    member_id = room.add_members(userID)
     json_Version = json_util.dumps(member_id)
     
     return make_response({'message': f"Member has been added to room {roomID} successfully" , "Member": json_Version} , 201)
