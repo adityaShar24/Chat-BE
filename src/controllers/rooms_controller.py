@@ -9,15 +9,6 @@ def create_room():
     roomname = body['roomname']
     userID = body['userID']
     rooms = Room(roomname= roomname , userID= userID)
-    
-    if not roomname and userID:
-        return make_response({'message':'roomname and created_by cannot be empty'} , 400)
-    
-    existing_room = Room.find_by_name(roomname)
-    
-    if existing_room:
-        return make_response({f"roomname {roomname} already exists please enter a unique roomname"} , 401)
-    
     create_room_id = rooms.create_room()
     
     json_Version = json_util.dumps(create_room_id)
@@ -28,8 +19,6 @@ def join_room():
     body = json.loads(request.data)
     roomID = body['roomID']
     userID = body['userID']
-    if not roomID and userID:
-        return make_response({'message':"userId and roomname cannot be empty"} , 400)
     member_id = Room.add_members(roomID , userID)
     json_Version = json_util.dumps(member_id)
     
