@@ -1,17 +1,19 @@
-from controllers.rooms_controller import create_room , get_All_rooms , join_room
+from controllers.users_controller import Register , Login , getAllUsers
 from flask import Blueprint
 from flask_jwt_extended import jwt_required
 
-room_bp = Blueprint('room_bp' , __name__)
 
-@room_bp.post('/create_room')
-def create_room_wrapper():
-    return create_room()
+auth_bp = Blueprint('auth_bp' , __name__)
 
-@room_bp.post('/join_room')
-def join_room_wrapper():
-    return join_room()
-    
-@room_bp.get('/all_rooms')
-def get_All_rooms_wrapper():
-    return get_All_rooms()
+@auth_bp.post('/register')
+def register_wrapper():
+    return Register()
+
+@auth_bp.post('/login')
+def login_wrapper():
+    return Login()
+
+@auth_bp.get('/all_users')
+def get_All_Users_wrapper():
+    return getAllUsers()
+
