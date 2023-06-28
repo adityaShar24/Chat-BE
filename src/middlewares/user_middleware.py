@@ -1,8 +1,9 @@
 from flask import request , make_response
 from models.users_model import User
+from routes.user_router import auth_bp
 import json
 
-
+@auth_bp.before_request
 def register_middleware():
     if request.endpoint == 'register_wrapper':
         body = json.loads(request.data)
@@ -18,7 +19,8 @@ def register_middleware():
         registered_user = User.find_by_username(username= username)
         if registered_user:
             return make_response({'message':f"username {username} already exist. Please enter unique username"} , 400)
-    
+
+@auth_bp.before_request 
 def login_middleware():
     if request.endpoint == 'login_wrapper':
         body = json.loads(request.data)
