@@ -44,13 +44,5 @@ def login():
     return make_response({'access_token': access_token} , 201)
 
 def get_All_Users():
-    body = json.loads(request.data)
-    username = body["username"]
-    password = body['password']
-    
-    users = User(username= username , password= password)
-    if not (users.password and users.username):
-        return make_response({"message":"Username and password cannot be empty"} , 400)
-    
     Users = User.get_all_users()
     return make_response(Users , 201)

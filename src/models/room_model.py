@@ -1,5 +1,4 @@
-from database.mongo import Rooms_Collection , Members_collection
-from models.members_model import Members
+from database.mongo import Rooms_Collection
 from bson.objectid import ObjectId
 
 class Room:
@@ -27,7 +26,5 @@ class Room:
         return rooms_list
     
     def add_members(self , userID):
-        member = Members(userID)
-        member_id = Members_collection.insert_one({'roomID': ObjectId(self.roomname) , 'userId': userID}).inserted_id
-        self.members.append(member_id)
+        member_id = self.members.append(userID)
         return member_id
