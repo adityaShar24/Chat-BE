@@ -1,4 +1,5 @@
-from controllers.user_contoller import register , login , get_All_Users
+from controllers.users_controller import Register , Login , getAllUsers
+from middlewares.user_middleware import register_middleware , login_middleware
 from flask import Blueprint
 from flask_jwt_extended import jwt_required
 
@@ -6,14 +7,16 @@ from flask_jwt_extended import jwt_required
 auth_bp = Blueprint('auth_bp' , __name__)
 
 @auth_bp.post('/register')
+@register_middleware()
 def register_wrapper():
-    return register()
+    return Register()
 
 @auth_bp.post('/login')
+@login_middleware()
 def login_wrapper():
-    return login()
+    return Login()
 
 @auth_bp.get('/all_users')
 @jwt_required()
 def get_All_Users_wrapper():
-    return get_All_Users()
+    return getAllUsers()
