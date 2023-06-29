@@ -1,17 +1,16 @@
 from database.mongo import Messages_Collection
 from bson.objectid import ObjectId
-from datetime import datetime
 
 class Message:
     def __init__(self , roomID , userID  , content):
         self.roomId = ObjectId(roomID)
-        self.sender = ObjectId(userID)
-        self.receiver = ObjectId(userID)
+        self.userID = ObjectId(userID)
         self.content = content
-        self.datetime = datetime.utcnow()
         
     def save_message(self):
-        message_id = Messages_Collection.insert_one({'roomID':self.roomId , 'sender': self.sender , 'receiver': self.receiver , 'content': self.content , 'datetime': self.datetime }).inserted_id
+        message_id = Messages_Collection.insert_one({'roomID':self.roomId , 'sender': self.userID , 'content': self.content }).inserted_id
         return message_id 
     
-    
+    def delete_message(self):
+        message = Messages_Collection.find_one_and_delete({'roomID':self.roomId , 'sender': self.sender , 'content': self.content })
+        return message
