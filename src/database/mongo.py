@@ -1,13 +1,14 @@
 from pymongo import MongoClient
-CONNECTION_STRING = "mongodb+srv://aditya:aditya2004@cluster0.lgjqzvz.mongodb.net/?retryWrites=true&w=majority"
-mongo_client = MongoClient(CONNECTION_STRING)
+MONGO_CONNECTION_STRING = "mongodb+srv://aditya:aditya2004@cluster0.lgjqzvz.mongodb.net/?retryWrites=true&w=majority"
+mongo_client = MongoClient(MONGO_CONNECTION_STRING)
 
-database = mongo_client['Chat']
-Users_collection = database['users']
-chat_collection = database['chat']
+Database = mongo_client['CHAT-BE']
+Users_Collection = Database['Users']
+Rooms_Collection = Database['Rooms']
+Messages_Collection = Database['Message']
 
 try:
-    mongo_client.server_info() 
-    print("Connection to MongoDB successful!")
+    mongo_client.server_info()
+    print("Connection to MongoDb Successful!")
 except Exception as e:
-    print("Connection to MongoDB failed:", e)
+    print("Failed to Connect" , e)
