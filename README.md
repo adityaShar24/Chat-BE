@@ -1,2 +1,1 @@
-# Chat-BE
-Chat-api made from flask framework in which people can interact with each other.
+Chat-BE is the backend component of a real-time chat application built using the Flask framework and Flask-SocketIO library. It provides the necessary server-side functionality to handle WebSocket communication and facilitate real-time messaging between clients.
