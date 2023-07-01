@@ -15,7 +15,7 @@ def create_room():
     
     return make_response({'message':"Room has been created successfully" , "Room":json_Version} , 201)
 
-def join_room():
+def add_member():
     body = json.loads(request.data)
     roomID = body['roomID']
     userID = body['userID']
