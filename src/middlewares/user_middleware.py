@@ -3,7 +3,7 @@ from models.users_model import User
 import json
 
 def register_middleware():
-    if request.endpoint == 'register_wrapper':
+    if request.endpoint == 'auth_bp.register_wrapper':
         body = json.loads(request.data)
         username = body['username']
         password = body['password']
@@ -19,7 +19,7 @@ def register_middleware():
             return make_response({'message':f"username {username} already exist. Please enter unique username"} , 400)
 
 def login_middleware():
-    if request.endpoint == 'login_wrapper':
+    if request.endpoint == 'auth_bp.login_wrapper':
         body = json.loads(request.data)
         username = body['username']
         password = body['password']

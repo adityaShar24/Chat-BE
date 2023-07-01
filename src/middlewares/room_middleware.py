@@ -1,7 +1,6 @@
 from flask import request , make_response
 from models.room_model import Room
 import json
-from routes.room_router import room_bp
 
 
 def create_room_middleware():
@@ -19,7 +18,7 @@ def create_room_middleware():
     
     
     
-def join_room_middleware():
+def add_member_middleware():
     if request.endpoint == 'join_room_wrapper':
         body = json.loads(request.data)
         roomID = body['roomname']
