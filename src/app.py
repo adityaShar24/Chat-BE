@@ -5,7 +5,7 @@ from routes.room_router import room_bp
 from routes.events import socketio
 from routes.message_router import message_bp
 from middlewares.user_middleware import register_middleware , login_middleware
-from middlewares.room_middleware import create_room_middleware , join_room_middleware
+from middlewares.room_middleware import create_room_middleware , add_member_middleware
 from middlewares.message_middleware import message_middleware
 
 app = Flask(__name__)
@@ -15,7 +15,7 @@ jwt = JWTManager(app)
 app.before_request(register_middleware)
 app.before_request(login_middleware)
 app.before_request(create_room_middleware)
-app.before_request(join_room_middleware)
+app.before_request(add_member_middleware)
 app.before_request(message_middleware)
 socketio.init_app(app)
 app.register_blueprint(auth_bp)

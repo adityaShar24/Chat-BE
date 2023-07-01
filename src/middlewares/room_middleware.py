@@ -19,7 +19,7 @@ def create_room_middleware():
     
     
 def add_member_middleware():
-    if request.endpoint == 'join_room_wrapper':
+    if request.endpoint == 'add_member_wrapper':
         body = json.loads(request.data)
         roomID = body['roomname']
         userID = body['userID']
