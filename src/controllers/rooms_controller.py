@@ -10,9 +10,7 @@ def create_room():
     userID = body['userID']
     rooms = Room(roomname= roomname , userID= userID)
     create_room_id = rooms.create_room()
-    
     json_Version = json_util.dumps(create_room_id)
-    
     return make_response({'message':"Room has been created successfully" , "Room":json_Version} , 201)
 
 def add_member():
@@ -21,8 +19,7 @@ def add_member():
     userID = body['userID']
     room = Room(userID= userID , roomname= roomID)
     member_id = room.add_members(userID)
-    json_Version = json_util.dumps(member_id)
-    
+    json_Version = json_util.dumps(member_id) 
     return make_response({'message': f"Member has been added to room {roomID} successfully" , "Member": json_Version} , 201)
     
 

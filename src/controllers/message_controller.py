@@ -10,7 +10,7 @@ def send_message():
     roomId = body['roomID']
     content = body['content']
     message = Message(userID=userID , roomID= roomId , content= content)
-    emit("message",{'userID':userID , 'roomID': roomId , 'content':content} , broadcast = True , to =roomId)
+    emit("message",{'userID':userID , 'roomID': roomId , 'content':content} , broadcast = True , to =roomId , namespace = '/')
     saved_message = message.save_message()
     json_Version = json_util.dumps(saved_message)
     return make_response({'message':'message has been sent successfully' , 'message': json_Version} , 201)
