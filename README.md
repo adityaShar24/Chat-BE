@@ -30,7 +30,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/adityaShar24/Chat-BE.git
+git clone <repository-url>
 Install the dependencies:
 
 bash
