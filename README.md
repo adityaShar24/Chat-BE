@@ -2,15 +2,16 @@
 
 A chat application built using Flask and Flask-SocketIO. This application allows users to register, login, create rooms, join existing rooms, send messages, and delete messages.
 
-##Table of Contents
-Technologies Used
-Features
-Getting Started
-Usage
-API Endpoints
-Socket Events
-Contributing
-License
+## Table of Contents
+
+- Technologies Used
+- Features
+- Getting Started
+- Usage
+- API Endpoints
+- Socket Events
+- Contributing
+- License
 
 ## Technologies Used
 -**Flask**: A micro web framework for building web applications.
@@ -19,7 +20,7 @@ License
 -**Flask-JWT-Extended**: A Flask extension that adds support for JSON Web Tokens (JWT) for user authentication.
 -**SocketIO**: A library that enables real-time, bidirectional communication between web clients and servers.
 
-#Features
+# Features
 
 -**User Registration**: Users can register an account by providing a username and password.
 -**User Login**: Registered users can log in using their credentials and receive an access token.
@@ -30,15 +31,15 @@ License
 -**Get All Messages**: Users can retrieve all messages in a specific chat room.
 -**Get All Rooms**: Users can retrieve a list of all available chat rooms.
 
-##Getting Started
+## Getting Started
 
-1)Clone the repository:
+1. Clone the repository:
 bash
 Copy code
 git clone (https://github.com/adityaShar24/Chat-BE.git)
 Install the dependencies:
 
-2)bash
+2. bash
 Copy code
 pip install -r requirements.txt
 Set up the MongoDB connection:
@@ -46,12 +47,12 @@ Set up the MongoDB connection:
 Modify the MONGO_CONNECTION_STRING variable in database/mongo.py with your MongoDB connection string.
 Run the application:
 
-3)bash
+3. bash
 Copy code
 python app.py
 The application will be accessible at http://localhost:5000.
 
-4)-**Usage**
+4. -**Usage**
 Register a new user by making a POST request to /register with the following JSON payload:
 
 json
@@ -70,7 +71,7 @@ Copy code
 }
 Use the obtained access token in the response for subsequent API requests by including it in the Authorization header:
 
-5)bash
+5. bash
 Copy code
 Authorization: Bearer <access-token>
 Create a new room by making a POST request to /create_room with the following JSON payload:
@@ -119,7 +120,7 @@ Retrieve all messages in a room by making a GET request to /get_messages/<room-I
 
 Retrieve a list of all rooms by making a GET request to /get_rooms.
 
-###API Endpoints
+### API Endpoints
 
 -POST /register: Register a new user.
 -POST /login: Log in with user credentials.
@@ -130,7 +131,7 @@ Retrieve a list of all rooms by making a GET request to /get_rooms.
 -GET /get_messages/<room-ID>: Get all messages in a chat room.
 -GET /get_rooms: Get a list of all chat rooms.
 
--**Socket Events**
+## Socket Events
 -join: Join a room.
 -leave: Leave a room.
 -message: Send a message in a room.
@@ -138,10 +139,12 @@ Retrieve a list of all rooms by making a GET request to /get_rooms.
 -connect: Connect to the server.
 -disconnect: Disconnect from the server.
 
-##Contributing
+## Contributing
 
-Contributions are welcome! If you find any issues or would like to contribute to the project, feel free to open a pull request.
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 
-##License
+Please note that the code blocks in the Markdown file are indented by four spaces for proper formatting..
+
+## License
 
 This project is licensed under the MIT License.
