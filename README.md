@@ -19,7 +19,7 @@ License
 -**Flask-JWT-Extended**: A Flask extension that adds support for JSON Web Tokens (JWT) for user authentication.
 -**SocketIO**: A library that enables real-time, bidirectional communication between web clients and servers.
 
-##Features
+#Features
 
 -**User Registration**: Users can register an account by providing a username and password.
 -**User Login**: Registered users can log in using their credentials and receive an access token.
