@@ -133,12 +133,12 @@ Copy code
 - GET /get_rooms: Get a list of all chat rooms.
 
 ## Socket Events
-- join: Join a room.
-- leave: Leave a room.
-- message: Send a message in a room.
-- delete_message: Delete a message in a room.
-- connect: Connect to the server.
-- disconnect: Disconnect from the server.
+- **join**: Join a room.
+- **leave**: Leave a room.
+- **message**: Send a message in a room.
+- **delete_message**: Delete a message in a room.
+- **connect**: Connect to the server.
+- **disconnect**: Disconnect from the server.
 
 ## Contributing
 
